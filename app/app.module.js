@@ -19,6 +19,7 @@ var _404_component_1 = require('./errors/404.component');
 var auth_service_1 = require('./user/auth.service');
 var forms_1 = require('@angular/forms');
 var index_1 = require('./events/index');
+var collapsible_well_component_1 = require('./common/collapsible-well.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -39,7 +40,8 @@ var AppModule = (function () {
                 index_1.CreateEventComponent,
                 _404_component_1.Error404Component,
                 index_1.CreateSessionComponent,
-                index_1.SessionListComponent
+                index_1.SessionListComponent,
+                collapsible_well_component_1.CollapsibleWellComponent
             ],
             providers: [
                 index_1.EventService,
