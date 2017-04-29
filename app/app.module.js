@@ -46,7 +46,10 @@ var AppModule = (function () {
             ],
             providers: [
                 index_1.EventService,
-                toastr_service_1.ToastrService,
+                {
+                    provide: toastr_service_1.TOASTR_TOKEN,
+                    useValue: toastr
+                },
                 index_1.EventRouteActivator,
                 index_1.EventListResolver,
                 {
