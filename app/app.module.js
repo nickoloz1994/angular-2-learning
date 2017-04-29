@@ -13,13 +13,12 @@ var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
 var events_app_component_1 = require('./events-app.component');
 var navbar_component_1 = require('./nav/navbar.component');
-var toastr_service_1 = require('./common/toastr.service');
 var routes_1 = require('./routes');
 var _404_component_1 = require('./errors/404.component');
 var auth_service_1 = require('./user/auth.service');
 var forms_1 = require('@angular/forms');
 var index_1 = require('./events/index');
-var collapsible_well_component_1 = require('./common/collapsible-well.component');
+var index_2 = require('./common/index');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -41,14 +40,20 @@ var AppModule = (function () {
                 _404_component_1.Error404Component,
                 index_1.CreateSessionComponent,
                 index_1.SessionListComponent,
-                collapsible_well_component_1.CollapsibleWellComponent,
-                index_1.DurationPipe
+                index_2.CollapsibleWellComponent,
+                index_1.DurationPipe,
+                index_2.SimpleModalComponent,
+                index_2.ModalTriggerDirective
             ],
             providers: [
                 index_1.EventService,
                 {
-                    provide: toastr_service_1.TOASTR_TOKEN,
+                    provide: index_2.TOASTR_TOKEN,
                     useValue: toastr
+                },
+                {
+                    provide: index_2.JQ_TOKEN,
+                    useValue: jQuery
                 },
                 index_1.EventRouteActivator,
                 index_1.EventListResolver,
