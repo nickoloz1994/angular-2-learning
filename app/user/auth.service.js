@@ -9,16 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+var Rx_1 = require('rxjs/Rx');
 var AuthService = (function () {
-    function AuthService() {
+    function AuthService(http) {
+        this.http = http;
     }
     AuthService.prototype.loginUser = function (userName, password) {
-        this.currentUser = {
-            id: 1,
-            userName: userName,
-            firstName: 'Nick',
-            lastName: 'Ptskialadze'
-        };
+        var _this = this;
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        var loginInfo = { username: userName, password: password };
+        return this.http.post('/api/login', JSON.stringify(loginInfo), options).do(function (response) {
+            if (response) {
+                _this.currentUser = response.json().user;
+            }
+        }).catch(function (error) {
+            return Rx_1.Observable.of(false);
+        });
     };
     AuthService.prototype.updateCurrentUser = function (firstName, lastName) {
         this.currentUser.firstName = firstName;
@@ -29,7 +37,7 @@ var AuthService = (function () {
     };
     AuthService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], AuthService);
     return AuthService;
 }());
