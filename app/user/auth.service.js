@@ -31,6 +31,9 @@ var AuthService = (function () {
     AuthService.prototype.updateCurrentUser = function (firstName, lastName) {
         this.currentUser.firstName = firstName;
         this.currentUser.lastName = lastName;
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.put("/api/users/" + this.currentUser.id, JSON.stringify(this.currentUser), options);
     };
     AuthService.prototype.isAuthenticated = function () {
         return !!this.currentUser;
