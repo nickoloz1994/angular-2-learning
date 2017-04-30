@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var router_1 = require('@angular/router');
+var http_1 = require('@angular/http');
 var events_app_component_1 = require('./events-app.component');
 var navbar_component_1 = require('./nav/navbar.component');
 var routes_1 = require('./routes');
@@ -28,7 +29,8 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 router_1.RouterModule.forRoot(routes_1.appRoutes),
                 forms_1.FormsModule,
-                forms_1.ReactiveFormsModule
+                forms_1.ReactiveFormsModule,
+                http_1.HttpModule
             ],
             declarations: [
                 events_app_component_1.EventsAppComponent,
@@ -57,7 +59,7 @@ var AppModule = (function () {
                     provide: index_2.JQ_TOKEN,
                     useValue: jQuery
                 },
-                index_1.EventRouteActivator,
+                index_1.EventResolver,
                 index_1.EventListResolver,
                 {
                     provide: 'canDeactivateCreateEvent',
