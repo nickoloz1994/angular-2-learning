@@ -50,6 +50,12 @@ export class ProfileComponent implements OnInit{
     this.router.navigate(['events'])
   }
 
+  logout(){
+    this.auth.logout().subscribe(() => {
+      this.router.navigate(['/user/login'])
+    })
+  }
+
   validateLastName(){
     return this.lastName.valid || this.lastName.untouched
   }

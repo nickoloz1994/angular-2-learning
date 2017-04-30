@@ -53,6 +53,12 @@ var AuthService = (function () {
             }
         }).subscribe();
     };
+    AuthService.prototype.logout = function () {
+        this.currentUser = undefined;
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post('/api/logout', JSON.stringify({}), options);
+    };
     AuthService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

@@ -41,6 +41,12 @@ var ProfileComponent = (function () {
     ProfileComponent.prototype.cancel = function () {
         this.router.navigate(['events']);
     };
+    ProfileComponent.prototype.logout = function () {
+        var _this = this;
+        this.auth.logout().subscribe(function () {
+            _this.router.navigate(['/user/login']);
+        });
+    };
     ProfileComponent.prototype.validateLastName = function () {
         return this.lastName.valid || this.lastName.untouched;
     };
