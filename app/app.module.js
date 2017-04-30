@@ -43,7 +43,8 @@ var AppModule = (function () {
                 index_2.CollapsibleWellComponent,
                 index_1.DurationPipe,
                 index_2.SimpleModalComponent,
-                index_2.ModalTriggerDirective
+                index_2.ModalTriggerDirective,
+                index_1.UpvoteComponent
             ],
             providers: [
                 index_1.EventService,
@@ -61,7 +62,8 @@ var AppModule = (function () {
                     provide: 'canDeactivateCreateEvent',
                     useValue: checkDirtyState
                 },
-                auth_service_1.AuthService
+                auth_service_1.AuthService,
+                index_1.VoterService
             ],
             bootstrap: [events_app_component_1.EventsAppComponent]
         }), 
