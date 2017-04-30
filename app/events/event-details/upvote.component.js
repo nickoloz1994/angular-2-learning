@@ -13,6 +13,13 @@ var UpvoteComponent = (function () {
     function UpvoteComponent() {
         this.vote = new core_1.EventEmitter();
     }
+    Object.defineProperty(UpvoteComponent.prototype, "voted", {
+        set: function (value) {
+            this.iconColor = value ? 'red' : 'white';
+        },
+        enumerable: true,
+        configurable: true
+    });
     UpvoteComponent.prototype.onClick = function () {
         this.vote.emit({});
     };
@@ -22,8 +29,9 @@ var UpvoteComponent = (function () {
     ], UpvoteComponent.prototype, "count", void 0);
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', Boolean)
-    ], UpvoteComponent.prototype, "voted", void 0);
+        __metadata('design:type', Object), 
+        __metadata('design:paramtypes', [Object])
+    ], UpvoteComponent.prototype, "voted", null);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', Object)
@@ -32,7 +40,7 @@ var UpvoteComponent = (function () {
         core_1.Component({
             selector: 'upvote',
             styleUrls: ['/app/events/event-details/upvote.components.css'],
-            template: "\n        <div class=\"votingWidgetContainer pontable\" (click)=\"onClick()\">\n            <div class=\"well votingWidget\">\n                <div class=\"votingButton\">\n                    <i *ngIf=\"voted\" class=\"glyphicon glyphicon-heart\"></i>\n                    <i *ngIf=\"!voted\" class=\"glyphicon glyphicon-heart-empty\"></i>\n                </div>\n                <div class=\"badge abdge-inverse votingCount\">\n                    <div>{{count}}</div>\n                </div>\n            </div>\n        </div>\n    "
+            template: "\n        <div class=\"votingWidgetContainer pontable\" (click)=\"onClick()\">\n            <div class=\"well votingWidget\">\n                <div class=\"votingButton\">\n                    <i class=\"glyphicon glyphicon-heart\" [style.color]=\"iconColor\"></i>\n                </div>\n                <div class=\"badge abdge-inverse votingCount\">\n                    <div>{{count}}</div>\n                </div>\n            </div>\n        </div>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], UpvoteComponent);
